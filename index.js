@@ -57,7 +57,7 @@ for (let i = 0; i < totalRounds; i++) {
 Success! (took ${(new Date().getTime() - startTime)}ms @ ${i.toLocaleString()} rounds)`))
 
     // recreate the equation
-    const equation = reactantsCompounds.map(compound => compound.coefficent + compound.elements.map(element => element.type + String((element.number > 1) ? element.number : "")).join("")).join(" + ") + " => " + productCompounds.map(compound => compound.coefficent + compound.elements.map(element => element.type + String((element.number > 1) ? element.number : "")).join("")).join(" + ")
+    const equation = reactantsCompounds.map(compound => compound.getEquationString()).join(' + ') + " => " + productCompounds.map(compound => compound.getEquationString()).join(' + ')
     console.log(equation)
 
     break;

@@ -1,12 +1,12 @@
 class Element {
   constructor(elementResolvable) {
-    if (typeof elementResolvable[0] != "string") {
+    if (typeof elementResolvable != "string") {
       this.type = elementResolvable.type
       this.number = elementResolvable.number
       return
     }
 
-    const elementParts = elementResolvable[0].split('')
+    const elementParts = elementResolvable.split('')
 
     this.number = Number(elementParts[elementParts.length - 1])
     if (isNaN(this.number)) {
