@@ -22,7 +22,7 @@ const totalRounds = Math.pow(maxCoefficient, (reactantsCompounds.length + produc
 
 console.log(chalk.black.bgBlueBright(`Fuzzing compound coefficients using max of ${totalRounds.toLocaleString()} rounds.`))
 
-const mergedCompounds = reactantsCompounds.concat(productCompounds)
+const mergedCompounds = reactantsCompounds.concat(productCompounds).sort((a, b) => (a.elements.length + a.subcompounds.length) - (b.elements.length + b.subcompounds.length))
 
 const counters = new Array(mergedCompounds.length).fill(1)
 counters[0] = 0
@@ -49,9 +49,11 @@ for (let i = 0; i < totalRounds; i++) {
     mergedCompounds[j].setCoefficent(counters[j])
   }
 
-  let equationBalance = compareElementCounts(countElements(reactantsCompounds), countElements(productCompounds));
+  let {balance, score} = compareElementCounts(countElements(reactantsCompounds), countElements(productCompounds));
 
-  if (equationBalance === 1) {
+  // console.log(score)
+
+  if (balance === 1) {
     success = true
     console.log(chalk.green(`
 Success! (took ${(new Date().getTime() - startTime)}ms @ ${i.toLocaleString()} rounds)`))

@@ -23,20 +23,24 @@ function countElements(compounds) {
 }
 
 function compareElementCounts(elementCountMap, elementCountMapTwo) {
-  let success = 0;
+  let score = 1
+  let balance = 0
 
   const iterator = elementCountMap.keys()
   let key = iterator.next();
 
   while (key.value !== undefined) {
+    score *= 1 / ((elementCountMap.get(key.value) / elementCountMapTwo.get(key.value)) || 1)
     if (elementCountMap.get(key.value) === elementCountMapTwo.get(key.value)) {
-      success++
+      balance += 1
     }
 
     key = iterator.next()
   }
 
-  return (success / elementCountMap.size) || 0
+  balance /= elementCountMap.size
+
+  return {balance, score}
 }
 
 export { resolveCompounds, countElements, compareElementCounts }
