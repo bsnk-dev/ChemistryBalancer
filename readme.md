@@ -1,5 +1,7 @@
 # Chemistry Balancer
 
+[Open in Replit](https://replit.com/github/bsnk-dev/ChemistryBalancer)
+
 Balance chemical equations using linear algebra. Written in JS.
 
 ## How to use
