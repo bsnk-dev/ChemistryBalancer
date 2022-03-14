@@ -10,6 +10,7 @@
   "author": "bsnk-dev",
   "license": "UNLICENSED",
   "dependencies": {
-    "chalk": "^5.0.1"
+    "chalk": "^5.0.1",
+    "linear-solve": "^1.2.1"
   }
 }
